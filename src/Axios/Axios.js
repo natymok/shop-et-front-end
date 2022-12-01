@@ -1,7 +1,7 @@
 import axios from 'axios'
 const _token=localStorage.getItem('user')
  const axiosinstance=axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"https://etshop-server.onrender.com/api",
     headers:{
         "Authorization":_token?_token:''
     }

@@ -106,7 +106,7 @@ function Header() {
   return (
     
       <nav>
-        <div className='bg-orange-400 border-2 border-b-gray-200 h-[150px] flex justify-between items-center text-black '>
+        <div className='bg-orange-400 border-2 border-b-gray-200 h-[90px] md:h-[150px] flex justify-between items-center text-black '>
           <div className='flex items-center justify-between w-[100%] md:w-[50%]'>
           <div className='w-[10%]'>
             <MdFastfood className='w-10 h-10'></MdFastfood>
