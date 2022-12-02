@@ -75,7 +75,7 @@ function Home() {
                     
                 <div key={pic._id} className='flex flex-col justify-between h-[350px] items-center p-3 '>
                              
-                 <motion.img whileHover={{scale:1.24}} src={`https://etshop-server.onrender.com/public/${pic.img}`} alt='not found' className='w-[70%]'/>
+                 <motion.img whileHover={{scale:1.24}} src={`https://etshop-server.onrender.com/public/${pic.img}`} className='w-[70%]'/>
                  <p className='m-3 font-serif font-medium'>{item.Description}</p>
                  <div className='flex justify-between w-full items-center'>
                   <p className=' font-thin font-serif text-sm'>BUY NOW</p>
