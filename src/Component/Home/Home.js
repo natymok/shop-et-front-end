@@ -68,9 +68,9 @@ function Home() {
     <div className='bg-gray-200 p-1 flex flex-col gap-7   w-full'>
             <p className='mx-auto hidden md:block font-serif font-semibold'>ከ 2,500 ብር በላይ ይገብዩና እቃዎን በነፃ በ አ.አ ያሉበት ድረስ እናድርስልዎ Free delivery in A.A for purchases of ETB 2,500 and above</p>
          <Bulletien img={banks} className=''></Bulletien>
-         <div className='flex flex-wrap  md:justify-evenly  w-[full]  p-1 gap-2 md:w-[full]'>
+         <div className='flex flex-wrap  md:justify-evenly  w-[full]  p-1  gap-2 md:w-[full]'>
          {product && product.map((item)=>(
-            <div key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[45%] md:w-[310px]  '>
+            <div key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
                {item.productPicture && item.productPicture.map((pic)=>(
                     
                 <div key={pic._id} className='flex flex-col justify-between h-[250px] md:h-[350px] items-center p-1 md:p-3  '>
