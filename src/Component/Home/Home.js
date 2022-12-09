@@ -70,7 +70,7 @@ function Home() {
          <Bulletien img={banks} className=''></Bulletien>
          <div className='flex flex-wrap  md:justify-evenly  w-[full]  p-1  gap-2 md:w-[full]'>
          {product && product.map((item)=>(
-            <div key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
+            <motion.div  whileTap={{scale:1.2}} key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
                {item.productPicture && item.productPicture.map((pic)=>(
                     
                 <div key={pic._id} className='flex flex-col justify-between h-[250px] md:h-[350px] items-center p-1 md:p-3  '>
@@ -111,7 +111,7 @@ function Home() {
                
                
 
-            </div>
+            </motion.div>
           ))}
          </div>
          <h1 className='text-serif font-bold text-2xl'>Categories</h1>
