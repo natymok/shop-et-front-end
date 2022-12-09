@@ -73,7 +73,7 @@ function Home() {
             <div key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[45%] md:w-[310px]  '>
                {item.productPicture && item.productPicture.map((pic)=>(
                     
-                <div key={pic._id} className='flex flex-col justify-between h-[200px] md:h-[350px] items-center p-1 md:p-3  '>
+                <div key={pic._id} className='flex flex-col justify-between h-[350px] items-center p-1 md:p-3  '>
                              
                  <motion.img whileHover={{scale:1.24}} src={`https://etshop-server.onrender.com/public/${pic.img}`} className='w-[70%]'/>
                  <p className='m-3 font-serif font-medium'>{item.Description}</p>
