@@ -76,7 +76,7 @@ export default function Cart() {
                       <div key={item._id} className='w-100 h-20 flex items-center justify-between'>
                         {callculateTotal(item)}
                         
-                        <img className="w-10 h-10 md:w-20 md:h-20" src={item.productPicture}alt=''></img>
+                        <img className="w-10 h-10 md:w-20 md:h-20" src={item.productPicture} alt=''></img>
                         <select className=" w-[30%] md:w-[10%] border-gray-400 border-2" >
                         <option value={'1'}>1</option>
                         <option value={'2'}>2</option>
