@@ -119,7 +119,7 @@ function Header() {
           </div>
            <div className='md:hidden flex items-center'>
            <MdMenu onClick={toogle} className='md:hidden w-10 h-6'></MdMenu>
-         {token && (<Cart clas></Cart>)}
+         {token && (<Cart></Cart>)}
            </div>
          </div>
 
