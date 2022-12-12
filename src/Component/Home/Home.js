@@ -7,6 +7,7 @@ import {MdShoppingBasket}from 'react-icons/md'
 import{motion} from 'framer-motion'
 import axiosinstance from '../../Axios/Axios'
 import { useHistory } from 'react-router-dom'
+import Loader from '../Loader'
 function Home() {
   const history=useHistory()
   const [{token,product,catagories,cart},dispatch]=useStateValue()
@@ -68,6 +69,7 @@ function Home() {
     <div className='bg-gray-200 p-1 flex flex-col gap-7   w-full'>
             <p className='mx-auto hidden md:block font-serif font-semibold'>ከ 2,500 ብር በላይ ይገብዩና እቃዎን በነፃ በ አ.አ ያሉበት ድረስ እናድርስልዎ Free delivery in A.A for purchases of ETB 2,500 and above</p>
          <Bulletien img={banks} className=''></Bulletien>
+         {!product && (<Loader></Loader>)}
          <div className='flex flex-wrap  md:justify-evenly  w-[full]  p-1  gap-2 md:w-[full]'>
          {product && product.map((item)=>(
             <div  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
