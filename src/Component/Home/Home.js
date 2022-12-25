@@ -2,19 +2,49 @@ import React from 'react'
 import Bulletien from '../Bulletin/Bulletin'
 import billboard from '../../img/chris.webp'
 import banks  from '../../img/bank.jpg'
+import { useEffect } from 'react'
 import {useStateValue} from '../../Context/StateProvider'
-import {MdShoppingBasket}from 'react-icons/md'
+import {MdShoppingBasket,MdChevronRight,MdChevronLeft}from 'react-icons/md'
 import{motion} from 'framer-motion'
 import axiosinstance from '../../Axios/Axios'
 import { useHistory } from 'react-router-dom'
 import Loader from '../Loader'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 function Home() {
+  useEffect(() => {
+    AOS.init();
+    
+  }, [])
+  let initialpage=0
   const history=useHistory()
   const [{token,product,catagories,cart},dispatch]=useStateValue()
-   
-    product && product.sort(()=> 0.5 - Math.random()) 
-    product && console.log(product.length)
-    product && product.splice(0,product.length-8)
+    
+     
+
+     
+    const nextpage=()=>{
+       initialpage=initialpage+1
+      axiosinstance.get('/getProduct', {
+        params: {
+          p: initialpage,
+    }})
+      .then((res)=>{
+        if(res.status == '200')
+        {
+           dispatch({
+            type:'getProduct',
+            product:res.data.message
+           })
+        
+      
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    }
     const addcart=(_product,quantity,price,productPicture)=>{
       let cartItem={product:_product,quantity:quantity,price:price,productPicture:productPicture}
       if(!token)
@@ -72,7 +102,7 @@ function Home() {
          {!product && (<Loader></Loader>)}
          <div className='flex flex-wrap  md:justify-evenly  w-[full]  p-1  gap-2 md:w-[full]'>
          {product && product.map((item)=>(
-            <div  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
+            <div data-aos="zoom-in-right"  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center w-[49%] md:w-[310px]  '>
                {item.productPicture && item.productPicture.map((pic)=>(
                     
                 <div key={pic._id} className='flex flex-col justify-between h-[250px] md:h-[350px] items-center p-1 md:p-3  '>
@@ -115,12 +145,20 @@ function Home() {
 
             </div>
           ))}
+         
          </div>
+        <motion.div  whileTap={{scale:1.3}} onClick={nextpage} className='bg-orange-400 w-[80px] h-[40px] cursor-pointer p-1 ml-[10%] rounded-md flex items-center justify-center my-auto'>
+         <p> next</p>
+         <MdChevronRight></MdChevronRight>
+         </motion.div>
+         
+        
+  
          <h1 className='text-serif font-bold text-2xl'>Categories</h1>
          <div className=' flex flex-wrap gap-1 justify-evenly'>
             {catagories && catagories.map((cat)=>(
               <motion.div onClick={()=>{searchByCatagory(cat._id)}} whileHover={{scale:1.11}}  key={cat._id} className='bg-white border-2 border-gray-400 w-[45%] md:w-[300px]  flex flex-col items-center justify-between'>
-              <div className='text-serif text-medium text-xl border-1 border-gray-400 r bg-orange-400 w-full flex justify-center hover:bg-orange-600 cursor-pointer'>
+              <div className='text-serif text-medium text-xl border-1 border-gray-400  bg-orange-400 w-full flex justify-center hover:bg-orange-600 cursor-pointer'>
               <p className='py-2'>{cat.name}</p>
 
               </div>
@@ -141,5 +179,4 @@ function Home() {
       </div>
   )
 }
-
 export default Home
