@@ -115,8 +115,8 @@ function Home() {
                   </div>
                   <div className=' flex flex-col md:flex-row items-center w-full justify-between  '>
                    <div className='flex'>
-                   <p>Qty</p>
-                    <select>
+                   <p className='bg-gray-500 rounded-sm py-1 px-4 text-white'>Qty</p>
+                    <select className=' border-2 border-gray-200 px-3'>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -124,7 +124,7 @@ function Home() {
                       <option>5</option>
                     </select>
                    </div>
-                    <div className='border-1 border-gray-300 bg-orange-400 hover:bg-orange-600 text-white font-serif flex p-1 w-full md:w-[50%] md:p-3 cursor-pointer' onClick={()=>{addcart(item._id,item.quantity,item.price,item.productPicture[0].img)}}>
+                    <div className='border-1 border-gray-300 bg-orange-400 hover:bg-orange-600 text-white font-serif flex p-1 w-full md:w-[50%] md:p-2 cursor-pointer' onClick={()=>{addcart(item._id,item.quantity,item.price,item.productPicture[0].img)}}>
                       <MdShoppingBasket></MdShoppingBasket>
                       <motion.p whileTap={{scale:1.2}}>Add to Cart</motion.p>
                     </div>
