@@ -102,9 +102,9 @@ function Slider({top,product}) {
    
   return (
     <div  className='w-full'>
-      <MdChevronLeft  onClick={()=>{scroll(-1585)}} className={`hidden md:block w-20 h-20 absolute top-[${top}px] z-50 left-[0%] cursor-pointer`}></MdChevronLeft>
+      <MdChevronLeft   onClick={()=>{scroll(-1585)}} className={`hidden md:block w-20 h-20 absolute top-[${top}px] z-50 left-[0%] cursor-pointer`}></MdChevronLeft>
       <MdChevronRight  onClick={()=>{scroll(1585)}} className={` hidden md:block w-20 h-20 absolute top-[${top}px] z-50 right-[0%] cursor-pointer`}></MdChevronRight>
-          <div ref={divref} className='flex justify-center md:justify-start flex-wrap md:flex-nowrap scroll-smooth overflow-x-scroll scrollbar-none  w-[full]  p-0  gap-2 md:w-[full]'>
+          <div ref={divref} onMouseLeave={()=>{scroll(1585)}} className='flex justify-center md:justify-start flex-wrap md:flex-nowrap scroll-smooth overflow-x-scroll scrollbar-none  w-[full]  p-0  gap-2 md:w-[full] '>
   
          {product && product.map((item)=>(
             <div data-aos="zoom-in-right"  key={item._id} className='bg-white border-2 border-gray-300 flex  justify-between items-center min-w-[150px] md:min-w-[310px] max-w-[200px] md:max-w-[310px] w-[49%] md:w-[310px] rounded-sm '>

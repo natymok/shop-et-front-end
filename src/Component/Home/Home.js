@@ -7,6 +7,8 @@ import banner from '../../img/banner.jpeg'
 import Loader from '../Loader'
 function Home() {
     const [{token,product,catagories,cart},dispatch]=useStateValue()
+    const _token=localStorage.getItem('user')
+    console.log(_token,'tokken')
     console.log(product)
    
   return (
