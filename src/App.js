@@ -58,10 +58,10 @@ function App() {
         </Route>
         <Route  exact path='/signup'>
         </Route>
-       </Suspense>
+    
        <Route  exact path='/signin'>
         </Route>
-        </Suspense>
+      
 
        </Switch>
       
