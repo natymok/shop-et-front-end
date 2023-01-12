@@ -2,8 +2,8 @@ import {lazy,Suspense} from 'react'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import {AnimatePresence}from 'framer-motion'
 import Header from "./Component/Header";
-import Signup from './Component/Signup/Signup';*/
-import Signin from './Component/Signin/Signin';*/
+import Signup from './Component/Signup/Signup';
+import Signin from './Component/Signin/Signin';
 import Home from './Component/Home/Home';
 import { useEffect } from 'react';
 import { useStateValue } from './Context/StateProvider';
