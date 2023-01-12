@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
 
-
 function App() {
   const [{token,cart,product,catagories},dispatch]=useStateValue()
 
@@ -56,10 +55,14 @@ function App() {
           <Home></Home>
           
         </Route>
-        <Route  exact path='/signup'>
+       
+       <Route  exact path='/signup'>
+          <Signup></Signup>
         </Route>
-    
-       <Route  exact path='/signin'>
+       
+       
+        <Route  exact path='/signin'>
+          <Signin></Signin>
         </Route>
       
 
