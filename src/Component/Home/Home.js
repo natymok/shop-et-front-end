@@ -12,8 +12,8 @@ function Home() {
     console.log(product)
    
   return (
-    <div className='bg-gray-200 py-1 px-10  flex flex-col gap-7  w-full'>
-        <p className='mx-auto hidden md:block font-serif font-semibold'>ከ 2,500 ብር በላይ ይገብዩና እቃዎን በነፃ በ አ.አ ያሉበት ድረስ እናድርስልዎ Free delivery in A.A for purchases of ETB 2,500 and above</p>
+    <div className='bg-gray-200 py-1 px-2 md:px-10  flex flex-col gap-7  w-full'>
+        <p className='mx-auto  font-serif font-semibold'>ከ 2,500 ብር በላይ ይገብዩና እቃዎን በነፃ በ አ.አ ያሉበት ድረስ እናድርስልዎ Free delivery in A.A for purchases of ETB 2,500 and above</p>
          <Bulletien img1={banks} img2={banner} className=''></Bulletien>
          {!product && (<Loader></Loader>)}
       <Slider top='600' product={product}></Slider>
