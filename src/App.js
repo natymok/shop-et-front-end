@@ -8,7 +8,8 @@ import Home from './Component/Home/Home';
 import { useEffect } from 'react';
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
-
+import About from './Component/About/About';
+import Contact from './Component/Contact/Contact';
 function App() {
   const [{token,cart,product,catagories},dispatch]=useStateValue()
 
@@ -59,7 +60,12 @@ function App() {
        <Route  exact path='/signup'>
           <Signup></Signup>
         </Route>
-       
+        <Route  exact path='/About'>
+          <About></About>
+        </Route>
+        <Route  exact path='/Contact'>
+          <Contact></Contact>
+        </Route>
        
         <Route  exact path='/signin'>
           <Signin></Signin>
