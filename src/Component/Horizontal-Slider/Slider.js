@@ -112,7 +112,7 @@ function Slider({top,product}) {
                     
                 <div key={pic._id} className='flex flex-col justify-between w-[350px]  h-[250px] md:h-[350px] items-center p-1 md:p-3  '>
                              
-                 <motion.img initial={{y:-200}} animate={{y:10}} whileHover={{scale:1.24}} src={pic.img} className='w-[90%] md:[60%]'/>
+                 <motion.img initial={{y:-200}} animate={{y:10}} whileHover={{scale:1.24}} src={pic.img} className='w-[90%] md:w-[60%]'/>
                  <p className='m-1 md:m-3 font-serif font-sm  md:font-medium'>{item.Description}</p>
                  <div className='flex justify-between w-full items-center'>
                   <p className=' font-thin font-serif text-sm'>BUY NOW</p>

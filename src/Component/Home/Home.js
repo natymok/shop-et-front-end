@@ -40,13 +40,14 @@ const formattedToday = dd + '/' + mm + '/' + yyyy;
   ))}></Slider>
   <Link to='/Contact'>Contact us</Link>
   <Link to='/About'>About us</Link>
-
-    </div>
-    <div className='pt-2'>
+  <div className='pt-2'>
         <p>{formattedToday }</p>
         
   <p className='text-gray-400 font-serif'>©   Copyright 2023 naty ENGINEERING PLC  All Rights Reserved. No part of this web page may be reproduced in any way without the prior written permission of naty ENGINEERING PLC </p>
     </div>
+
+    </div>
+   
    </>
   )
 }
