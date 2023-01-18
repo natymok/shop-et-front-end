@@ -106,7 +106,7 @@ function Header() {
   return (
     
       <nav>
-        <motion.div  transition={{delay:0.2,type:'spring'}} initial={{y:-250}} animate={{y:0}} className='bg-orange-400 border-2 border-b-gray-200 h-[60px] md:h-[150px] flex justify-between items-center text-black '>
+        <motion.div  transition={{delay:0.2,type:'spring'}} initial={{y:-250}} animate={{y:0}} className='bg-orange-400 border-2 border-b-gray-200 h-[60px] md:h-[150px] flex justify-between items-center text-black overflow-hidden '>
           <div className='flex items-center justify-between w-[100%] md:w-[50%]'>
           <div className='w-[10%]'>
             <MdFastfood className='w-10 h-10'></MdFastfood>

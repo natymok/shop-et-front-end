@@ -51,10 +51,10 @@ export default function Cart() {
   }
   return (
    <div className="">
-    <motion.div whileTap={{scale:1.2}} className="relative cursor-pointer" onClick={fetchCart}>
+    <motion.div whileTap={{scale:1.2}} className="relative  cursor-pointer" onClick={fetchCart}>
      <MdShoppingBasket className=" w-5 h-5 md:w-10 md:h-7 "> </MdShoppingBasket>
-       <div className="flex bg-black rounded-full justify-center items-center w-5 h-4  absolute -top-4 left-7 text-xl text-white">
-       <p className=" ">{cart && cart.length}</p>
+       <div className="flex bg-black rounded-full justify-center items-center w-5 h-4  absolute left-1 -top-3 md:-top-4 md:left-7 text-xl text-white">
+       <p className="  ">{cart && cart.length}</p>
         </div>
      </motion.div>
       {showModal ? (
