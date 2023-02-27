@@ -38,7 +38,11 @@ const signin=()=>{
 
   })
   .catch((err)=>{
-    setErrors(err.response.data.message)
+    setErrors(err.response.data.error)
+    setTimeout(()=>{
+      setErrors('')
+
+    },3000)
   
 
   })
