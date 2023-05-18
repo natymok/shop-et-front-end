@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import { StateProvider } from './Context/StateProvider';
-import { initialstate } from './Context/initialstate';
-import reducer from './Context/reducer';
+import App from './App.js';
+import { StateProvider } from '../src/Context/StateProvider';
+import { initialstate } from '../src/Context/initialstate';
+import reducer from '../src/Context/reducer';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
     
      <StateProvider initialstate={initialstate} reducer={reducer}>
-               <App />
+             <BrowserRouter>
+             <App />
+             
+             </BrowserRouter>
 
      </StateProvider>
    
@@ -23,3 +27,12 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+
+
+
+
+
+
+

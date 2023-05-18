@@ -1,80 +1,97 @@
-import {lazy,Suspense} from 'react'
-import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 import {AnimatePresence}from 'framer-motion'
-import Header from "./Component/Header";
-import Signup from './Component/Signup/Signup';
-import Signin from './Component/Signin/Signin';
-import Home from './Component/Home/Home';
-import { useEffect } from 'react';
+
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
-import About from './Component/About/About';
-import Contact from './Component/Contact/Contact';
+
+import { useEffect, useState } from 'react';
+import SignIn from '../src/pages/Authentication/SignIn.js';
+import SignUp from '../src/pages/Authentication/SignUp.js';
+import Chart from '../src/pages/Chart';
+import ECommerce from '../src/pages/Dashboard/ECommerce.js';
+import FormElements from '../src/pages/Form/FormElements.js';
+import FormLayout from '../src/pages/Form/FormLayout.js';
+
+import Settings from '../src/pages/Settings.js';
+import Tables from '../src/pages/Tables.js';
+import Alerts from '../src/pages/UiElements/Alerts.js';
+import Buttons from '../src/pages/UiElements/Buttons.js';
 function App() {
   const [{token,cart,product,catagories},dispatch]=useStateValue()
 
   useEffect(()=>{
-    axiosinstance.get('/getProduct')
-    .then((res)=>{
-      if(res.status == '200')
-      {
-         dispatch({
-          type:'getProduct',
-          product:res.data.message
-         })
-      
     
-      }
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-   axiosinstance.get('/getCatagories')
-    .then((res)=>{
-      if(res.status == '200')
-      {
-         dispatch({
-          type:'getcatagory',
-          catagory:res.data.catagories
-         })
-      }
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-   
 
   },[])
 
   return (
     <div className="App">
       <AnimatePresence>
-      <BrowserRouter>
+
+
+
+
+
+<Routes>
+     
+     <Route path="/" element={<ECommerce />} />
+     <Route path="/forms/form-elements" element={<FormElements />} />
+     <Route path="/forms/form-layout" element={<FormLayout />} />
+     <Route path="/tables" element={<Tables />} />
+     <Route path="/settings" element={<Settings />} />
+     <Route path="/chart" element={<Chart />} />
+     <Route path="/ui/alerts" element={<Alerts />} />
+     <Route path="/ui/buttons" element={<Buttons />} />
+     <Route path="/auth/signin" element={<SignIn />} />
+     <Route path="/auth/signup" element={<SignUp />} />
+
+
+
+   </Routes>
+
+
+
+
+
+
+
+
+
+
+
+
+
+     {/* <BrowserRouter>
        <Switch>
         <Route  exact path='/'>
-          <Header></Header>
-          <Home></Home>
+           <ECommerce></ECommerce>
           
         </Route>
        
-       <Route  exact path='/signup'>
-          <Signup></Signup>
+       <Route  exact path='/forms/form-layout'>
+          <FormLayout></FormLayout>
         </Route>
-        <Route  exact path='/About'>
-          <About></About>
+        <Route  exact path='/forms/form-elements'>
+          <FormElements></FormElements>
         </Route>
-        <Route  exact path='/Contact'>
-          <Contact></Contact>
+        <Route  exact path='tables'>
+          <Tables></Tables>
         </Route>
        
-        <Route  exact path='/signin'>
-          <Signin></Signin>
+        <Route  exact path='/auth/signup'>
+          <SignUp></SignUp>
+        </Route>
+        <Route  exact path='/auth/signin'>
+          <SignIn></SignIn>
+        </Route>
+        <Route  exact path='/ui/buttons'>
+          <Buttons></Buttons>
         </Route>
       
 
        </Switch>
       
-      </BrowserRouter>
+      </BrowserRouter>*/}
       </AnimatePresence>
       
     </div>
