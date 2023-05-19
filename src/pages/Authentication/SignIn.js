@@ -3,8 +3,47 @@ import Breadcrumb from '../../components/Breadcrumb.js';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
 import DefaultLayout from '../../layout/DefaultLayout';
-
+import axiosinstance from '../../Axios/Axios.js';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useStateValue } from '../../Context/StateProvider.js';
+import { useNavigate } from 'react-router-dom';
 const SignIn = () => {
+   
+  const[{token},dispatch]=useStateValue()
+  const [email,setemail]=useState('')
+  const [password,setpassword]=useState('')
+
+  const navigate = useNavigate();
+  const login=(e)=>{
+   
+    e.preventDefault()
+
+    axiosinstance.post('/company/signin',{companyEmail:email,password:password})
+         .then((res)=>{
+          if(res.status=='200'){
+            localStorage.setItem('user',res.data.Accesstoken)
+            localStorage.setItem('companyName',res.data.companyName)
+            localStorage.setItem('amount',res.data.amount)
+            dispatch({
+              type:'signin',
+              token:res.data.Accesstoken
+        })
+        console.log(res)
+        navigate('/dashboard')
+    
+
+            
+          }
+          else{
+            console.log(res.data.error)
+          }
+         })
+         .catch((err)=>{
+          console.log(err)
+         })
+
+  }
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Sign In" />
@@ -12,14 +51,10 @@ const SignIn = () => {
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
-              <Link className="mb-5.5 inline-block" to="/">
-                <img className="hidden dark:block" src={Logo} alt="Logo" />
-                <img className="dark:hidden" src={LogoDark} alt="Logo" />
-              </Link>
+             
 
               <p className="2xl:px-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                suspendisse.
+                 First Stock exchange Platform in Ethiopia
               </p>
 
               <span className="mt-15 inline-block">
@@ -161,6 +196,7 @@ const SignIn = () => {
                   </label>
                   <div className="relative">
                     <input
+                      onChange={(e)=>{setemail(e.target.value)}}
                       type="email"
                       placeholder="Enter your email"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
@@ -188,10 +224,11 @@ const SignIn = () => {
 
                 <div className="mb-6">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    Re-type Password
+                    Password
                   </label>
                   <div className="relative">
                     <input
+                     onChange={(e)=>{setpassword(e.target.value)}}
                       type="password"
                       placeholder="6+ Characters, 1 Capital letter"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
@@ -222,7 +259,9 @@ const SignIn = () => {
                 </div>
 
                 <div className="mb-5">
-                  <input
+                  <motion.input
+                      whileTap={{scale:1.4}}
+                    onClick={(e)=>{login(e)}}
                     type="submit"
                     value="Sign In"
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"

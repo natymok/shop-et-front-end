@@ -1,9 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useStateValue } from '../Context/StateProvider';
 import UserOne from '../images/user/user-01.png';
+import { useNavigate } from 'react-router-dom';
 
 const DropdownUser = () => {
+  const navigate = useNavigate();
+  const [{token,TotalSell,amount,customer,companyName},dispatch]=useStateValue()
+  const logout=()=>{
+    localStorage.clear()
+    dispatch({
+      type:'signin',
+      token:null
+})
+    navigate('/')
+
+  }
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -11,6 +23,7 @@ const DropdownUser = () => {
 
   // close on click outside
   useEffect(() => {
+    
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return;
       if (
@@ -45,7 +58,7 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {companyName}
           </span>
          
         </span>
@@ -83,7 +96,7 @@ const DropdownUser = () => {
         }`}
       >
         
-        <button className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button onClick={logout} className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
           <svg
             className="fill-current"
             width="22"

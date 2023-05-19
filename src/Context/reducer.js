@@ -2,31 +2,32 @@ const reducer=(state,action)=>{
     
     switch(action.type){
         
+               
     case 'signin':
         return{
             ...state,
             token:action.token
         }
-        case 'getProduct':
+        case 'companyName':
             return{
                 ...state,
-                product:action.product
+                companyName:action.companyName
             }
-            case 'getcatagory':
+            case 'TotalSell':
             return{
                 ...state,
-                catagories:action.catagory
+                TotalSell:action.TotalSell
             }
-            case 'addcart':
+            case 'amount':
                 return{
                     ...state,
-                    cart:action.cart
+                    amount:action.amount
                 }
-            case 'allcat':
-                return{
-                    ...state,
-                    catagoryList:action.allcatagory
-                }
+                case 'customer':
+                    return{
+                        ...state,
+                        customer:action.customer
+                    }
         default:
             return state
         }

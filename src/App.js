@@ -33,8 +33,8 @@ function App() {
 
 
 <Routes>
-     
-     <Route path="/" element={<ECommerce />} />
+    <Route path="/" element={<SignIn />} />
+     <Route path="/dashboard" element={<ECommerce />} />
      <Route path="/forms/form-elements" element={<FormElements />} />
      <Route path="/forms/form-layout" element={<FormLayout />} />
      <Route path="/tables" element={<Tables />} />

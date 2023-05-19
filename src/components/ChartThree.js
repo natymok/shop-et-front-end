@@ -6,7 +6,7 @@ interface ChartThreeState {
   series: number[];
 }
 
-const options: ApexOptions = {
+const options= {
   chart: {
     type: 'donut',
   },
