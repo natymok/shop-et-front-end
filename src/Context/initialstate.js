@@ -7,6 +7,7 @@ export const initialstate={
     newcompany:null,
     companyName:null,
     TotalSell:0,
-    customer:0
+    customer:0,
+    topBuy:null
     
 }

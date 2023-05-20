@@ -3,7 +3,7 @@ import Logo from '../images/logo/logo-icon.svg';
 import DarkModeSwitcher from './DarkModeSwitcher';
 import DropdownMessage from './DropdownMessage';
 import DropdownNotification from './DropdownNotification';
-import DropdownUser from './DropdownUser';
+import DropdownUser from './DropdownUser'
 
 const Header = (props) => {
   return (

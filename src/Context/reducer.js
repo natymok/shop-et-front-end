@@ -28,6 +28,12 @@ const reducer=(state,action)=>{
                         ...state,
                         customer:action.customer
                     }
+
+                    case 'topbuy':
+                        return{
+                            ...state,
+                            topbuy:action.topbuy
+                        } 
         default:
             return state
         }

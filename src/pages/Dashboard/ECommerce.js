@@ -11,6 +11,7 @@ import axiosinstance from '../../Axios/Axios.js';
 import { useStateValue } from '../../Context/StateProvider.js';
 import { Link } from 'react-router-dom';
 const ECommerce = () => {
+  let topBuy=[]
   const [{token,TotalSell,amount,customer},dispatch]=useStateValue()
   useEffect(()=>{
     const tokken=localStorage.getItem('user')
@@ -49,7 +50,24 @@ dispatch({
   .catch((err)=>{
     console.log(err)
   })
- 
+     
+
+  axiosinstance.post('/topbuy',{CompanyName:CompanyName})
+  .then((res)=>{
+     if(res.status=='200'){
+      dispatch({
+        type:'topbuy',
+        topbuy:res.data.message
+    })
+   
+      console.log(res.data.message,"newwwwww")
+      console.log(topBuy,"looooooooo")
+     }
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+
 
     }
 
