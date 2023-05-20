@@ -34,7 +34,7 @@ const TableOne = () => {
         </div>
 
 
-       {topbuy.map((item)=>(
+       {topbuy && topbuy.map((item)=>(
              <div className="grid grid-cols-3 sm:grid-cols-5">
              <div className="flex items-center gap-3 p-2.5 xl:p-5">
                <div className="flex-shrink-0">
