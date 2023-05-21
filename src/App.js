@@ -1,6 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,    BrowserRouter as Router,  } from 'react-router-dom';
 import {AnimatePresence}from 'framer-motion'
-
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
 
@@ -31,7 +30,6 @@ function App() {
 
 
 
-
 <Routes>
     <Route path="/" element={<SignIn />} />
      <Route path="/dashboard" element={<ECommerce />} />
@@ -55,43 +53,6 @@ function App() {
 
 
 
-
-
-
-
-
-
-     {/* <BrowserRouter>
-       <Switch>
-        <Route  exact path='/'>
-           <ECommerce></ECommerce>
-          
-        </Route>
-       
-       <Route  exact path='/forms/form-layout'>
-          <FormLayout></FormLayout>
-        </Route>
-        <Route  exact path='/forms/form-elements'>
-          <FormElements></FormElements>
-        </Route>
-        <Route  exact path='tables'>
-          <Tables></Tables>
-        </Route>
-       
-        <Route  exact path='/auth/signup'>
-          <SignUp></SignUp>
-        </Route>
-        <Route  exact path='/auth/signin'>
-          <SignIn></SignIn>
-        </Route>
-        <Route  exact path='/ui/buttons'>
-          <Buttons></Buttons>
-        </Route>
-      
-
-       </Switch>
-      
-      </BrowserRouter>*/}
       </AnimatePresence>
       
     </div>
