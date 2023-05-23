@@ -13,10 +13,27 @@ import { Link } from 'react-router-dom';
 const ECommerce = () => {
   let topBuy=[]
   const [{token,TotalSell,amount,customer},dispatch]=useStateValue()
+   
   useEffect(()=>{
+    let _amount
     const tokken=localStorage.getItem('user')
     const CompanyName=localStorage.getItem('companyName')
-    const amount=localStorage.getItem('amount')
+      axiosinstance.get('/getCompany')
+      .then((res)=>{
+           _amount=res.data.message.filter((item)=>( 
+            item.companyName==CompanyName
+          
+    
+           ))
+         
+           dispatch({
+            type:'amount',
+            amount:_amount[0].amount
+          })
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
     if(tokken){
       dispatch({
         type:'signin',
@@ -26,11 +43,9 @@ const ECommerce = () => {
     type:'companyName',
     companyName:CompanyName
   })
-  dispatch({
-    type:'amount',
-    amount:amount
-  })
-  axiosinstance.post('/getTotalstock',{CompanyName:CompanyName})
+  
+
+  axiosinstance.post('/getTotalstock',{companyName:CompanyName})
   .then((res)=>{
     console.log(res,'thiss res')
     dispatch({
@@ -52,7 +67,7 @@ dispatch({
   })
      
 
-  axiosinstance.post('/topbuy',{CompanyName:CompanyName})
+  axiosinstance.post('/topbuy',{companyName:CompanyName})
   .then((res)=>{
      if(res.status=='200'){
       dispatch({
@@ -61,7 +76,7 @@ dispatch({
     })
    
       console.log(res.data.message,"newwwwww")
-      console.log(topBuy,"looooooooo")
+      console.log(topBuy,"looooooooo",_amount)
      }
   })
   .catch((err)=>{

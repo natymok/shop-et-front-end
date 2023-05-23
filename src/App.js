@@ -2,7 +2,7 @@ import { Route, Routes,    BrowserRouter as Router,  } from 'react-router-dom';
 import {AnimatePresence}from 'framer-motion'
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
-
+import VerifyOtp from './components/VerifyOtp';
 import { useEffect, useState } from 'react';
 import SignIn from '../src/pages/Authentication/SignIn.js';
 import SignUp from '../src/pages/Authentication/SignUp.js';
@@ -33,6 +33,7 @@ function App() {
 <Routes>
     <Route path="/" element={<SignIn />} />
      <Route path="/dashboard" element={<ECommerce />} />
+     <Route path="/verifyOtp" element={<VerifyOtp></VerifyOtp>} />
      <Route path="/forms/form-elements" element={<FormElements />} />
      <Route path="/forms/form-layout" element={<FormLayout />} />
      <Route path="/tables" element={<Tables />} />

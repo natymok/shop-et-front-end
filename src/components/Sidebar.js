@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import Logo from '../images/logo/logo.svg';
 import SidebarLinkGroup from './SidebarLinkGroup';
-
+import { useStateValue } from '../Context/StateProvider';
 
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const [{token,TotalSell,amount,customer},dispatch]=useStateValue()
   const location = useLocation();
   const { pathname } = location;
 

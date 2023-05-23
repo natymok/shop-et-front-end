@@ -1,10 +1,12 @@
 import { ReactNode, useState } from 'react';
 import Header from '../src/components/Header';
 import Sidebar from '../src/components/Sidebar';
-
+import { useStateValue } from '../src/Context/StateProvider';
 
 
 const DefaultLayout = ({ children }) => {
+  const [{token,TotalSell,amount,customer},dispatch]=useStateValue()
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -12,7 +14,7 @@ const DefaultLayout = ({ children }) => {
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex h-screen overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
 
         {/* <!-- ===== Content Area Start ===== --> */}
