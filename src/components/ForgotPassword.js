@@ -6,51 +6,56 @@ import DefaultLayout from '../layout/DefaultLayout';
 import axiosinstance from '../Axios/Axios.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const VerifyOtp = () => {
+import { useStateValue } from '../Context/StateProvider.js';
+const ForgotPassword = () => {
+    const [{companyEmail},dispatch]=useStateValue()
   const [message,setMessage]=useState('')
   const [error,setError]=useState('')
-  const [companyEmail,setCompanyEmail]=useState('')
+  const [email,setCompanyEmail]=useState('')
   const [otp,setOtp]=useState('')
   const navigate = useNavigate();
 
-const verify=()=>{
-  axiosinstance.post('/Verifyotp',{companyEmail,otp})
-  .then((res)=>{
-    if(res.status=='200')
-    {
-      setMessage(res.data.message)
-      setTimeout(()=>{
-         setMessage('')
-         navigate('/')
-
-      },2000)
-     }
-     if(res.status=='400'){
-      setError(res.data.error)
+  const GetCode=(e)=>{
+    e.preventDefault()
+    axiosinstance.post('/forgotpass/sendotp',{companyEmail:email})
+    .then((res)=>{
+      if(res.status=='200')
+      {
+            
+        dispatch({
+          type:'companyEmail',
+          companyEmail:email
+    })
+           navigate('/auth/reset-password')
+  
+  
+       }
+       if(res.status=='400'){
+        setError(res.data.error)
+        setTimeout(()=>{
+          setError('')
+        
+  
+       },2000)
+       }
+        
+    })
+  
+  
+  
+  
+  
+    
+    .catch((err)=>{
+      setError('something went wrong check the email you typed is correct')
       setTimeout(()=>{
         setError('')
       
-
-     },2000)
-     }
-      
-  })
-
-
-
-
-
   
-  .catch((err)=>{
-    setError('something went wrong check the email you typed is correct')
-    setTimeout(()=>{
-      setError('')
-    
-
-   },2000)
-    
-  })
-}  
+     },2000)
+      
+    })
+  }  
 
   return (
     <DefaultLayout>
@@ -195,9 +200,7 @@ const verify=()=>{
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              <p className="mb-9  text-sm  text-success dark:text-white sm:text-title-xl2">
-                  we have sent otp  to your email chech your email
-              </p>
+              
               {message && (
                   <div className="flex w-full border-l-6 border-[#34D399] bg-[#34D399] bg-opacity-[15%] px-7 py-8 shadow-md dark:bg-[#1B1B24] dark:bg-opacity-30 md:p-9">
                   <div className="mr-5 flex h-9 w-full max-w-[36px] items-center justify-center rounded-lg bg-[#34D399]">
@@ -316,47 +319,15 @@ const verify=()=>{
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    otp
-                  </label>
-                  <div className="relative">
-                    <input
-                       onChange={(e)=>{setOtp(e.target.value)}}
-                      type="email"
-                      placeholder="Enter your otp"
-                      className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                    />
-
-                    <span className="absolute right-4 top-4">
-                      <svg
-                        className="fill-current"
-                        width="22"
-                        height="22"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g opacity="0.5">
-                          <path
-                            d="M19.2516 3.30005H2.75156C1.58281 3.30005 0.585938 4.26255 0.585938 5.46567V16.6032C0.585938 17.7719 1.54844 18.7688 2.75156 18.7688H19.2516C20.4203 18.7688 21.4172 17.8063 21.4172 16.6032V5.4313C21.4172 4.26255 20.4203 3.30005 19.2516 3.30005ZM19.2516 4.84692C19.2859 4.84692 19.3203 4.84692 19.3547 4.84692L11.0016 10.2094L2.64844 4.84692C2.68281 4.84692 2.71719 4.84692 2.75156 4.84692H19.2516ZM19.2516 17.1532H2.75156C2.40781 17.1532 2.13281 16.8782 2.13281 16.5344V6.35942L10.1766 11.5157C10.4172 11.6875 10.6922 11.7563 10.9672 11.7563C11.2422 11.7563 11.5172 11.6875 11.7578 11.5157L19.8016 6.35942V16.5688C19.8703 16.9125 19.5953 17.1532 19.2516 17.1532Z"
-                            fill=""
-                          />
-                        </g>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-
-              
+               
 
             
 
                 <div className="mb-5">
                   <input
-                    onClick={verify}
+                   onClick={(e)=>{GetCode(e)}}
                     type="submit"
-                    value="VerifyOtp"
+                    value="Get Verification Code"
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   />
                 </div>
@@ -373,4 +344,4 @@ const verify=()=>{
   );
 };
 
-export default VerifyOtp;
+export default ForgotPassword;

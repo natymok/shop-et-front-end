@@ -14,7 +14,7 @@ const TableOne = () => {
       </h4>
 
       <div className="flex flex-col">
-        <div className="grid grid-cols-3  rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+        <div className="grid grid-cols-3 gap-50 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
           <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               user
@@ -35,7 +35,7 @@ const TableOne = () => {
 
 
        {topbuy && topbuy.map((item)=>(
-             <div className="grid grid-cols-3  sm:grid-cols-5">
+             <div key={item.username} className="grid grid-cols-3 gap-60 sm:grid-cols-5">
              <div className="flex items-center gap-3 p-2.5 xl:p-5">
               
                <p className="hidden text-black  dark:text-white sm:block">

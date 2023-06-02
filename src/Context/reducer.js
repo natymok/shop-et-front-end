@@ -13,6 +13,17 @@ const reducer=(state,action)=>{
                 ...state,
                 companyName:action.companyName
             }
+            case 'transaction':
+                return{
+                    ...state,
+                    transaction:action.transaction
+                }
+
+            case 'companyEmail':
+                return{
+                    ...state,
+                    companyEmail:action.companyEmail
+                }
             case 'TotalSell':
             return{
                 ...state,

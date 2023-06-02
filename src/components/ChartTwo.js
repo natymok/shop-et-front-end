@@ -67,12 +67,9 @@ const options= {
 const ChartTwo = () => {
   const [state, setState] = useState({
     series: [
+   
       {
-        name: 'Sales',
-        data: [44, 55, 41, 67, 22, 43, 65],
-      },
-      {
-        name: 'Revenue',
+        name: 'profit',
         data: [13, 23, 20, 8, 13, 27, 15],
       },
     ],
@@ -94,7 +91,7 @@ const ChartTwo = () => {
               className="relative z-20 inline-flex appearance-none bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none"
             >
               <option value="">This Week</option>
-              <option value="">Last Week</option>
+              
             </select>
             <span className="absolute top-1/2 right-3 z-10 -translate-y-1/2">
               <svg

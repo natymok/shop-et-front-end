@@ -8,6 +8,10 @@ export const initialstate={
     companyName:null,
     TotalSell:0,
     customer:0,
-    topBuy:null
+    topBuy:null,
+    amount:0,
+    companyEmail:null,
+    transaction:[0,0,0,0,0,0,0,0,0,0,0,0]
+
     
 }

@@ -6,15 +6,18 @@ import DefaultLayout from '../layout/DefaultLayout';
 import axiosinstance from '../Axios/Axios.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const VerifyOtp = () => {
+import { useStateValue } from '../Context/StateProvider.js';
+const ResetPassword = () => {
+  const [{companyEmail},dispatch]=useStateValue()
   const [message,setMessage]=useState('')
   const [error,setError]=useState('')
-  const [companyEmail,setCompanyEmail]=useState('')
+  const [newpassword,setPassword]=useState('')
   const [otp,setOtp]=useState('')
   const navigate = useNavigate();
 
-const verify=()=>{
-  axiosinstance.post('/Verifyotp',{companyEmail,otp})
+const reset=()=>{
+  console.log(companyEmail,'emnaillllllllll')
+  axiosinstance.post('/forgotpass/create_new',{companyEmail:companyEmail,otp:otp,newpassword:newpassword})
   .then((res)=>{
     if(res.status=='200')
     {
@@ -282,13 +285,13 @@ const verify=()=>{
               <form>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    companyEmail
+                    newpassword
                   </label>
                   <div className="relative">
                     <input
-                    onChange={(e)=>{setCompanyEmail(e.target.value)}}
+                    onChange={(e)=>{setPassword(e.target.value)}}
                       type="text"
-                      placeholder="Enter your copmpanyEmail"
+                      placeholder="Enter your new password"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
 
@@ -354,7 +357,7 @@ const verify=()=>{
 
                 <div className="mb-5">
                   <input
-                    onClick={verify}
+                   onClick={reset}
                     type="submit"
                     value="VerifyOtp"
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
@@ -373,4 +376,4 @@ const verify=()=>{
   );
 };
 
-export default VerifyOtp;
+export default ResetPassword;

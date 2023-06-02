@@ -15,6 +15,8 @@ import Settings from '../src/pages/Settings.js';
 import Tables from '../src/pages/Tables.js';
 import Alerts from '../src/pages/UiElements/Alerts.js';
 import Buttons from '../src/pages/UiElements/Buttons.js';
+import ResetPassword from './components/ResetPassword';
+import ForgotPassword from './components/ForgotPassword'
 function App() {
   const [{token,cart,product,catagories},dispatch]=useStateValue()
 
@@ -33,6 +35,8 @@ function App() {
 <Routes>
     <Route path="/" element={<SignIn />} />
      <Route path="/dashboard" element={<ECommerce />} />
+     <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>} />
+     <Route path="/auth/reset-password" element={<ResetPassword></ResetPassword>} />
      <Route path="/verifyOtp" element={<VerifyOtp></VerifyOtp>} />
      <Route path="/forms/form-elements" element={<FormElements />} />
      <Route path="/forms/form-layout" element={<FormLayout />} />

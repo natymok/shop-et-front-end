@@ -12,7 +12,7 @@ import { useStateValue } from '../../Context/StateProvider.js';
 import { Link } from 'react-router-dom';
 const ECommerce = () => {
   let topBuy=[]
-  const [{token,TotalSell,amount,customer},dispatch]=useStateValue()
+  const [{token,TotalSell,amount,customer,transaction},dispatch]=useStateValue()
    
   useEffect(()=>{
     let _amount
@@ -20,11 +20,13 @@ const ECommerce = () => {
     const CompanyName=localStorage.getItem('companyName')
       axiosinstance.get('/getCompany')
       .then((res)=>{
+          
            _amount=res.data.message.filter((item)=>( 
             item.companyName==CompanyName
           
     
            ))
+           console.log(_amount.amount,'nussssssssss')
          
            dispatch({
             type:'amount',
@@ -56,10 +58,7 @@ dispatch({
     type:'customer',
     customer:res.data.customers
 })
-dispatch({
-  type:'amount',
-  amount:amount - res.data.amount
-})
+
     
   })
   .catch((err)=>{
@@ -74,14 +73,29 @@ dispatch({
         type:'topbuy',
         topbuy:res.data.message
     })
-   
-      console.log(res.data.message,"newwwwww")
-      console.log(topBuy,"looooooooo",_amount)
+
      }
   })
   .catch((err)=>{
     console.log(err)
   })
+  axiosinstance.post('/company/getTransaction',{companyName:CompanyName})
+  .then((res)=>{
+    if(res.status=='200'){
+      dispatch({
+        type:'transaction',
+        transaction:res.data.message
+    })
+   
+
+     }
+  
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+     
+
 
 
     }
@@ -90,27 +104,39 @@ dispatch({
   },[])
   return (
     
-   token && (
-    <DefaultLayout>
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-      <CardOne />
-      <CardTwo />
-      <CardThree />
-      <CardFour />
-    </div>
 
-    <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-      <ChartOne />
-      <ChartTwo />
-     
-      
-      <div className="col-span-12 xl:col-span-8">
-        <TableOne />
+    token && (
+      <DefaultLayout>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+        <CardOne />
+        <CardTwo />
+        <CardThree />
+        <CardFour />
       </div>
-     
-    </div>
-  </DefaultLayout>
+  
+      <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+        <ChartOne />
+        <ChartTwo />
+       
+        
+        <div className="col-span-12 xl:col-span-8">
+          <TableOne />
+        </div>
+       
+      </div>
+    </DefaultLayout>
+
+ 
+ 
+ 
    )
+
+
+
+
+
+  
+   
 
    
   );
