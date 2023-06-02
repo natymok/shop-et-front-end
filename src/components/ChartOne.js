@@ -85,10 +85,7 @@ const options = {
   xaxis: {
     type: 'category',
     categories: [
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
+      
       'Jan',
       'Feb',
       'Mar',
@@ -97,6 +94,10 @@ const options = {
       'Jun',
       'Jul',
       'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ],
     axisBorder: {
       show: false,
