@@ -17,11 +17,12 @@ import Alerts from '../src/pages/UiElements/Alerts.js';
 import Buttons from '../src/pages/UiElements/Buttons.js';
 import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword'
+import Addwallet from './components/Addwallet';
 function App() {
   const [{token,cart,product,catagories},dispatch]=useStateValue()
 
   useEffect(()=>{
-    
+
 
   },[])
 
@@ -47,6 +48,7 @@ function App() {
      <Route path="/ui/buttons" element={<Buttons />} />
      <Route path="/auth/signin" element={<SignIn />} />
      <Route path="/auth/signup" element={<SignUp />} />
+     <Route path="/add-wallet" element={<Addwallet></Addwallet>} />
 
 
 

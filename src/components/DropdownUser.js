@@ -117,7 +117,8 @@ doc.save("report.pdf")
       </Link>
 
       {/* <!-- Dropdown Start --> */}
-      <div
+  { token && (
+        <div
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
@@ -155,6 +156,7 @@ doc.save("report.pdf")
           get Report
         </button>
       </div>
+  )}
       {/* <!-- Dropdown End --> */}
     </div>
   );
