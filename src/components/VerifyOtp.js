@@ -287,7 +287,7 @@ const verify=()=>{
                   <div className="relative">
                     <input
                     onChange={(e)=>{setCompanyEmail(e.target.value)}}
-                      type="text"
+                      type="email"
                       placeholder="Enter your copmpanyEmail"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
@@ -323,7 +323,7 @@ const verify=()=>{
                   <div className="relative">
                     <input
                        onChange={(e)=>{setOtp(e.target.value)}}
-                      type="email"
+                      type="text"
                       placeholder="Enter your otp"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
