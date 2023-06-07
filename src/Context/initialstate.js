@@ -11,7 +11,8 @@ export const initialstate={
     topBuy:null,
     amount:0,
     companyEmail:null,
-    transaction:[0,0,0,0,0,0,0,0,0,0,0,0]
+    transaction:[0,0,0,0,0,0,0,0,0,0,0,0],
+    balance:0
 
     
 }

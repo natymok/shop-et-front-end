@@ -13,7 +13,8 @@ const VerifyOtp = () => {
   const [otp,setOtp]=useState('')
   const navigate = useNavigate();
 
-const verify=()=>{
+const verify=(e)=>{
+  e.preventDefault()
   axiosinstance.post('/Verifyotp',{companyEmail,otp})
   .then((res)=>{
     if(res.status=='200')
@@ -354,7 +355,7 @@ const verify=()=>{
 
                 <div className="mb-5">
                   <input
-                    onClick={verify}
+                    onClick={(e)=>{verify(e)}}
                     type="submit"
                     value="VerifyOtp"
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"

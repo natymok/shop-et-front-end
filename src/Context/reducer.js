@@ -24,6 +24,11 @@ const reducer=(state,action)=>{
                     ...state,
                     companyEmail:action.companyEmail
                 }
+                case 'balance':
+                    return{
+                        ...state,
+                        balance:action.balance
+                    }
             case 'TotalSell':
             return{
                 ...state,

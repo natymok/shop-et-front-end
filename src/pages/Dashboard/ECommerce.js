@@ -58,7 +58,15 @@ dispatch({
     type:'customer',
     customer:res.data.customers
 })
+dispatch({
+  type:'balance',
+  balance:res.data.customers
+})
 
+dispatch({
+  type:'balance',
+  balance:res.data.balance
+})
     
   })
   .catch((err)=>{

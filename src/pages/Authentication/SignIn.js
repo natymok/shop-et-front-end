@@ -32,6 +32,10 @@ const SignIn = () => {
               type:'signin',
               token:res.data.Accesstoken
         })
+        dispatch({
+          type:'balance',
+          balance:res.data.balance
+    })
         console.log(res)
         navigate('/dashboard')
     
