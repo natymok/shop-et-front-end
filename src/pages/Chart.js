@@ -1,6 +1,5 @@
 import Breadcrumb from '../components/Breadcrumb.js';
 import ChartOne from '../components/ChartOne.js';
-import ChartThree from '../components/ChartThree.js';
 import ChartTwo from '../components/ChartTwo.js';
 import DefaultLayout from '../layout/DefaultLayout';
 
@@ -15,7 +14,7 @@ const Chart = () => {
         </div>
         <ChartOne />
         <ChartTwo />
-        <ChartThree />
+    
       </div>
     </DefaultLayout>
   );

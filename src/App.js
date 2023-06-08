@@ -10,7 +10,7 @@ import Chart from '../src/pages/Chart';
 import ECommerce from '../src/pages/Dashboard/ECommerce.js';
 import FormElements from '../src/pages/Form/FormElements.js';
 import FormLayout from '../src/pages/Form/FormLayout.js';
-
+import ChartOne from './components/ChartOne';
 import Settings from '../src/pages/Settings.js';
 import Tables from '../src/pages/Tables.js';
 import Alerts from '../src/pages/UiElements/Alerts.js';
@@ -49,6 +49,7 @@ function App() {
      <Route path="/auth/signin" element={<SignIn />} />
      <Route path="/auth/signup" element={<SignUp />} />
      <Route path="/add-wallet" element={<Addwallet></Addwallet>} />
+     <Route path="/chart" element={<ChartOne/>} />
 
 
 
