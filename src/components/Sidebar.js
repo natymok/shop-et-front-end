@@ -228,7 +228,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                        fill=""
                      />
                    </svg>
-                   ADD to wallet
+                   Withdraw
                  </NavLink>
                </li>
                {/* <!-- Menu Item Profile --> */}

@@ -50,7 +50,7 @@ console.log(balance,amount,'nesruuuuuuuu')
   return (
     <>
       <Breadcrumb pageName="Money Checkout to chapa" />
-      {/* <!-- Input Fields --> */}
+      
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-col gap-5.5 p-6.5">
         {error && (
