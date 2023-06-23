@@ -21,6 +21,7 @@ const SignUp = () => {
   bodyFormData.append('uploaded_file',uploaded_file);
   const navigate = useNavigate();
     const signup=(e)=>{
+      console.log('booooodu',bodyFormData)
       e.preventDefault()
       axiosinstance.post('/Signup',bodyFormData)
       .then((res)=>{
