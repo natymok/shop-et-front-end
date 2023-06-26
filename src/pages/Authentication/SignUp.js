@@ -16,7 +16,7 @@ const SignUp = () => {
   var bodyFormData = new FormData();
   bodyFormData.append('companyName', companyName);
   bodyFormData.append('companyEmail', companyEmail);
-  bodyFormData.append('password', companyName);
+  bodyFormData.append('password', password);
   bodyFormData.append('uploaded_file', uploaded_file);
   const navigate = useNavigate();
   const signup = (e) => {
