@@ -32,6 +32,10 @@ const SignIn = () => {
             token: res.data.Accesstoken,
           });
           dispatch({
+            type: 'companyName',
+            companyName: res.data.companyName,
+          });
+          dispatch({
             type: 'balance',
             balance: res.data.balance,
           });

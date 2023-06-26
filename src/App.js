@@ -1,5 +1,5 @@
-import { Route, Routes,    BrowserRouter as Router,  } from 'react-router-dom';
-import {AnimatePresence}from 'framer-motion'
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { useStateValue } from './Context/StateProvider';
 import axiosinstance from './Axios/Axios';
 import VerifyOtp from './components/VerifyOtp';
@@ -16,55 +16,47 @@ import Tables from '../src/pages/Tables.js';
 import Alerts from '../src/pages/UiElements/Alerts.js';
 import Buttons from '../src/pages/UiElements/Buttons.js';
 import ResetPassword from './components/ResetPassword';
-import ForgotPassword from './components/ForgotPassword'
+import ForgotPassword from './components/ForgotPassword';
 import Addwallet from './components/Addwallet';
 function App() {
-  const [{token,cart,product,catagories},dispatch]=useStateValue()
-
-  useEffect(()=>{
-
-
-  },[])
+  const [{ token, cart, product, catagories }, dispatch] = useStateValue();
+  const companyNamee = localStorage.getItem('companyName');
+  useEffect(() => {
+    dispatch({
+      type: 'companyName',
+      companyName: companyNamee,
+    });
+  }, []);
 
   return (
     <div className="App">
       <AnimatePresence>
-
-
-
-
-<Routes>
-    <Route path="/" element={<SignIn />} />
-     <Route path="/dashboard" element={<ECommerce />} />
-     <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>} />
-     <Route path="/auth/reset-password" element={<ResetPassword></ResetPassword>} />
-     <Route path="/verifyOtp" element={<VerifyOtp></VerifyOtp>} />
-     <Route path="/forms/form-elements" element={<FormElements />} />
-     <Route path="/forms/form-layout" element={<FormLayout />} />
-     <Route path="/tables" element={<Tables />} />
-     <Route path="/settings" element={<Settings />} />
-     <Route path="/chart" element={<Chart />} />
-     <Route path="/ui/alerts" element={<Alerts />} />
-     <Route path="/ui/buttons" element={<Buttons />} />
-     <Route path="/auth/signin" element={<SignIn />} />
-     <Route path="/auth/signup" element={<SignUp />} />
-     <Route path="/add-wallet" element={<Addwallet></Addwallet>} />
-     <Route path="/chart" element={<ChartOne/>} />
-
-
-
-   </Routes>
-
-
-
-
-
-
-
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/dashboard" element={<ECommerce />} />
+          <Route
+            path="/forgot-password"
+            element={<ForgotPassword></ForgotPassword>}
+          />
+          <Route
+            path="/auth/reset-password"
+            element={<ResetPassword></ResetPassword>}
+          />
+          <Route path="/verifyOtp" element={<VerifyOtp></VerifyOtp>} />
+          <Route path="/forms/form-elements" element={<FormElements />} />
+          <Route path="/forms/form-layout" element={<FormLayout />} />
+          <Route path="/tables" element={<Tables />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/chart" element={<Chart />} />
+          <Route path="/ui/alerts" element={<Alerts />} />
+          <Route path="/ui/buttons" element={<Buttons />} />
+          <Route path="/auth/signin" element={<SignIn />} />
+          <Route path="/auth/signup" element={<SignUp />} />
+          <Route path="/add-wallet" element={<Addwallet></Addwallet>} />
+          <Route path="/chart" element={<ChartOne />} />
+        </Routes>
       </AnimatePresence>
-      
     </div>
-      
   );
 }
 
